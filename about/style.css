@@ -1,0 +1,725 @@
+/* ==========================================================================
+   The Daily Prophet - Dark Wizard & Systems Operations Gazette
+   Shreyas Sawant • Systems Operations Engineer Edition
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display+SC:wght@700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap');
+
+:root {
+  --font-serif: "EB Garamond", Garamond, Georgia, serif;
+  --font-title: "Playfair Display", Georgia, serif;
+  --font-masthead: "Playfair Display SC", "Cinzel", serif;
+  --font-cinzel: "Cinzel", serif;
+  --font-mono: "JetBrains Mono", Consolas, monospace;
+
+  /* Dark Mystic Palette */
+  --bg-dark: #0a0d14;
+  --parchment-dark: #121620;
+  --parchment-surface: #181d2a;
+  --parchment-border: #232a3b;
+  --gold: #d4af37;
+  --gold-glow: rgba(212, 175, 55, 0.35);
+  --gold-light: #fef08a;
+  --crimson: #8b0000;
+  --gryffindor: #991b1b;
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --cyan: #38bdf8;
+  --emerald: #10b981;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1.45;
+  color: var(--text-main);
+  background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 50% 10%, rgba(30, 41, 59, 0.4) 0%, transparent 70%),
+    radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+    url('https://www.transparenttextures.com/patterns/cubes.png');
+  min-height: 100vh;
+  padding: 4.5rem 1rem 3rem 1rem;
+  position: relative;
+  overflow-x: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Lumos Spell Glow Effect */
+body.lumos-active {
+  background-color: #0f1422;
+  box-shadow: inset 0 0 120px rgba(212, 175, 55, 0.22);
+}
+
+body.lumos-active .main__wrapper {
+  border-color: #ffd700;
+  box-shadow: 0 0 50px rgba(212, 175, 55, 0.25), 0 25px 70px rgba(0, 0, 0, 0.9);
+}
+
+/* ==========================================================================
+   TOP SPELL CONTROLS & WAX SEAL RETURN BUTTON
+   ========================================================================== */
+.wizard-top-controls {
+  position: fixed;
+  top: 14px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.wax-seal-btn {
+  pointer-events: auto;
+  background: linear-gradient(135deg, #740001, #991b1b);
+  color: #fef08a !important;
+  text-decoration: none;
+  font-family: var(--font-cinzel);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 8px 18px;
+  border-radius: 24px;
+  border: 1px solid var(--gold);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wax-seal-btn:hover {
+  background: linear-gradient(135deg, #991b1b, #b91c1c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(185, 28, 28, 0.5), 0 0 15px rgba(212, 175, 55, 0.5);
+  color: #ffffff !important;
+}
+
+.magic-action-group {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.magic-spell-btn {
+  background: rgba(18, 22, 32, 0.85);
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-family: var(--font-cinzel);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.magic-spell-btn:hover {
+  border-color: var(--gold);
+  background: rgba(26, 32, 48, 0.95);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+  transform: translateY(-2px);
+}
+
+.magic-spell-btn.spell-casting {
+  background: var(--gold);
+  color: #0b0e14 !important;
+  box-shadow: 0 0 20px #ffd700;
+}
+
+/* Magic Sparks */
+.magic-spark {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  animation: sparkFly 0.75s ease-out forwards;
+}
+
+@keyframes sparkFly {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+}
+
+/* ==========================================================================
+   THE GOLDEN SNITCH (Interactive Animated Mascot)
+   ========================================================================== */
+.golden-snitch {
+  position: fixed;
+  bottom: 35px;
+  right: 35px;
+  width: 32px;
+  height: 32px;
+  z-index: 1000;
+  pointer-events: none;
+  animation: snitchHover 3s ease-in-out infinite;
+}
+
+.snitch-body {
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle at 30% 30%, #fff2a3 0%, #d4af37 60%, #997815 100%);
+  border-radius: 50%;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.9), inset 0 1px 2px #ffffff;
+}
+
+.snitch-wing {
+  position: absolute;
+  top: 2px;
+  width: 22px;
+  height: 7px;
+  border-radius: 50% 50% 20% 20%;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.9);
+}
+
+.snitch-wing.wing-left {
+  left: -13px;
+  transform-origin: right center;
+  animation: flapLeft 0.1s linear infinite;
+}
+
+.snitch-wing.wing-right {
+  right: -13px;
+  transform-origin: left center;
+  animation: flapRight 0.1s linear infinite;
+}
+
+@keyframes snitchHover {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  30% { transform: translateY(-16px) translateX(8px) rotate(8deg); }
+  60% { transform: translateY(-6px) translateX(-10px) rotate(-6deg); }
+}
+
+@keyframes flapLeft {
+  0%, 100% { transform: rotate(15deg) scaleY(1); }
+  50% { transform: rotate(-35deg) scaleY(0.4); }
+}
+
+@keyframes flapRight {
+  0%, 100% { transform: rotate(-15deg) scaleY(1); }
+  50% { transform: rotate(35deg) scaleY(0.4); }
+}
+
+/* ==========================================================================
+   DAILY PROPHET NEWSPAPER CONTAINER (Dark Theme)
+   ========================================================================== */
+.main__wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 2.8rem;
+  background-color: var(--parchment-dark);
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8),
+              0 0 0 1px rgba(255, 255, 255, 0.06),
+              0 0 35px rgba(212, 175, 55, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ornate Corner Accents */
+.main__wrapper::before {
+  content: '✦';
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 16px;
+  color: var(--gold);
+  text-shadow: 0 0 6px var(--gold);
+}
+
+.main__wrapper::after {
+  content: '✦';
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 16px;
+  color: var(--gold);
+  text-shadow: 0 0 6px var(--gold);
+}
+
+/* Masthead Title */
+.prophet-masthead {
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.prophet-masthead h1 {
+  font-family: var(--font-masthead);
+  font-size: clamp(48px, 6vw, 84px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 20px rgba(212, 175, 55, 0.25);
+}
+
+.masthead-tagline {
+  font-family: var(--font-cinzel);
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 4px;
+}
+
+/* Aside Sub-Header */
+.prophet-meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  padding: 6px 14px;
+  margin: 1.2rem 0 1.8rem 0;
+  font-family: var(--font-cinzel);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.prophet-meta-bar span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.meta-highlight {
+  color: var(--gold-light);
+}
+
+/* ==========================================================================
+   2-COLUMN BALANCED NEWSPAPER GRID
+   ========================================================================== */
+.prophet-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.85fr) minmax(0, 1.15fr);
+  grid-gap: 2.2rem;
+  align-items: start;
+}
+
+/* Lead Column (Left) */
+.lead-headline {
+  font-family: var(--font-title);
+  font-size: clamp(26px, 3vw, 36px);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+}
+
+.sub-headline {
+  font-family: var(--font-cinzel);
+  font-size: 13.5px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(212, 175, 55, 0.4);
+}
+
+/* Article Body */
+.prophet-article-body {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #e2e8f0;
+  text-align: justify;
+}
+
+.prophet-article-body p {
+  margin-bottom: 1rem;
+}
+
+.prophet-article-body p:first-of-type::first-letter {
+  font-family: var(--font-title);
+  font-size: 52px;
+  line-height: 0.8;
+  float: left;
+  margin: 4px 8px 0 0;
+  font-weight: 700;
+  color: var(--gold);
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+}
+
+/* Interactive SVG Visual Feature */
+.prophet-visual-card {
+  background: var(--parchment-surface);
+  border: 1px solid var(--parchment-border);
+  border-radius: 6px;
+  padding: 18px;
+  margin: 1.4rem 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.visual-title {
+  font-family: var(--font-cinzel);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Animated Cluster Node Illustration */
+.cluster-graphic {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.cluster-graphic svg {
+  width: 100%;
+  height: 100%;
+}
+
+.pulse-circle {
+  animation: pulseGlow 2.5s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+.visual-caption {
+  font-style: italic;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* Secondary Feature: 20k VM Migration */
+.migration-banner {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(16, 185, 129, 0.08));
+  border-left: 3px solid var(--cyan);
+  padding: 14px 16px;
+  margin: 1.4rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.migration-banner h4 {
+  font-family: var(--font-cinzel);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cyan);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.migration-banner p {
+  font-size: 13.5px;
+  color: #cbd5e1;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* ==========================================================================
+   SIDEBAR (Right Column - Strictly Constrained)
+   ========================================================================== */
+.prophet-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  width: 100%;
+}
+
+/* Sidebar Dossier Box */
+.sidebar-card {
+  background: var(--parchment-surface);
+  border: 1px solid var(--parchment-border);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.sidebar-card-header {
+  background: rgba(212, 175, 55, 0.12);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+  padding: 10px 14px;
+  font-family: var(--font-cinzel);
+  font-size: 12.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar-card-body {
+  padding: 14px 16px;
+  font-size: 13.5px;
+}
+
+/* Stat Grid Inside Sidebar */
+.spec-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.spec-row:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.spec-label {
+  font-family: var(--font-cinzel);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--gold);
+  margin-bottom: 2px;
+}
+
+.spec-value {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.spec-value.highlight-green {
+  color: var(--emerald);
+  font-family: var(--font-mono);
+}
+
+.spec-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 4px;
+}
+
+.spec-tag {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #e2e8f0;
+}
+
+/* High Availability SLA Callout Box */
+.sla-callout-card {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(0, 0, 0, 0.4));
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  padding: 16px;
+  text-align: center;
+}
+
+.sla-number {
+  font-family: var(--font-title);
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--gold-light);
+  line-height: 1;
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+.sla-label {
+  font-family: var(--font-cinzel);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ffffff;
+  margin-top: 4px;
+}
+
+.sla-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   TECHNICAL SPELLBOOK (Full-width grid)
+   ========================================================================== */
+.prophet-full-section {
+  grid-column: 1 / -1;
+  margin-top: 2rem;
+  border-top: 2px solid var(--gold);
+  padding-top: 1.5rem;
+}
+
+.section-banner-title {
+  font-family: var(--font-cinzel);
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.section-banner-title::before,
+.section-banner-title::after {
+  content: '';
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  flex: 1;
+  max-width: 140px;
+}
+
+.spellbook-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.2rem;
+}
+
+.spellbook-card {
+  background: var(--parchment-surface);
+  border: 1px solid var(--parchment-border);
+  border-radius: 6px;
+  padding: 16px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.spellbook-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.spell-icon {
+  font-size: 20px;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.spell-heading {
+  font-family: var(--font-cinzel);
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.spell-stack {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--cyan);
+  margin-bottom: 8px;
+}
+
+.spell-details {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   MINISTRY CLASSIFIEDS & OWER POST FOOTER
+   ========================================================================== */
+.prophet-footer {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--parchment-border);
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-cinzel);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.footer-owl-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-owl-links a {
+  color: #cbd5e1;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.footer-owl-links a:hover {
+  color: var(--gold);
+}
+
+/* ==========================================================================
+   RESPONSIVE QUERIES
+   ========================================================================== */
+@media (max-width: 900px) {
+  .prophet-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .spellbook-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .main__wrapper {
+    padding: 2rem 1.4rem;
+  }
+
+  .prophet-meta-bar {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .prophet-footer {
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+  }
+
+  .footer-owl-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

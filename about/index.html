@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Daily Prophet | Shreyas Sawant • Systems Operations</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!-- Google Fonts for Authentic Harry Potter & Dark Gothic Newspaper Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display+SC:wght@700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- =========================================================================
+       TOP WIZARD CONTROLS & WAX SEAL RETURN BUTTON
+       ========================================================================= -->
+  <div class="wizard-top-controls">
+    <!-- Hogwarts Wax Seal Return Button -->
+    <a href="../index.html" class="wax-seal-btn" title="Return to Portfolio OS">
+      <span>&#9898;</span> &larr; Disapparate to Desktop OS
+    </a>
+
+    <!-- Magical Spell Controls -->
+    <div class="magic-action-group">
+      <!-- Hedwig's Theme Melody Synthesizer -->
+      <button type="button" class="magic-spell-btn" id="playThemeBtn" title="Play Hedwig's Theme Chime">
+        <i class="fas fa-music"></i> <span>Play Chime</span>
+      </button>
+
+      <!-- Lumos / Nox Spell Switch -->
+      <button type="button" class="magic-spell-btn" id="lumosSpellBtn" title="Cast Lumos / Nox Spell">
+        <i class="fas fa-wand-magic-sparkles"></i> <span id="wandStatus">LUMOS (Light)</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       THE GOLDEN SNITCH (Interactive Animated Mascot)
+       ========================================================================= -->
+  <div class="golden-snitch" title="The Golden Snitch">
+    <div class="snitch-wing wing-left"></div>
+    <div class="snitch-body"></div>
+    <div class="snitch-wing wing-right"></div>
+  </div>
+
+  <!-- =========================================================================
+       DAILY PROPHET DARK WIZARD NEWSPAPER CONTAINER
+       ========================================================================= -->
+  <div class="main__wrapper">
+
+    <!-- Newspaper Masthead -->
+    <div class="prophet-masthead">
+      <h1>The Daily Prophet</h1>
+      <div class="masthead-tagline">Ministry of Magical Infrastructure &bull; Special Systems Gazette</div>
+    </div>
+
+    <!-- Newspaper Meta Bar -->
+    <div class="prophet-meta-bar">
+      <span><span>Issue:</span> <strong class="meta-highlight">#404 Production Edition</strong></span>
+      <span><span>Realms Commanded:</span> <strong>15,000+ Linux Servers</strong></span>
+      <span><span>Uptime Shield:</span> <strong class="meta-highlight">99.9% SLA</strong></span>
+      <span><span>Shift:</span> <strong>24/7/365 On-Call</strong></span>
+    </div>
+
+    <!-- 2-Column Balanced Grid -->
+    <div class="prophet-grid">
+
+      <!-- LEFT COLUMN (Main Lead Story & Operations Chronicles) -->
+      <div class="prophet-main-column">
+        <h2 class="lead-headline">
+          Master of 15,000+ Linux Realms: Shreyas Sawant Guards High-Availability Production Clusters
+        </h2>
+
+        <div class="sub-headline">
+          Systems Operations Engineer defends enterprise infrastructure across RHEL, SLES, Ubuntu &amp; CentOS fleets with Bash, Ansible &amp; Python automation spells.
+        </div>
+
+        <div class="prophet-article-body">
+          <p>
+            <strong>MINISTRY DATA ARCHIVES</strong> — In the high-stakes realm of 24/7 mission-critical operations, downtime is the darkest curse. Operating within a demanding shift-based environment covering more than 15,000 production servers, Systems Operations Engineer <strong>Shreyas Sawant</strong> has maintained an extraordinary 99.9% uptime SLA across high-availability Linux clusters.
+          </p>
+          <p>
+            With over two years of rigorous, hands-on production experience, Sawant specializes in full-lifecycle incident, problem, and change management. When outages threaten enterprise workflows, he collaborates closely with senior architects, development pods, and partner teams to rapidly diagnose anomalies, perform deep root cause analysis (RCA), and restore services without delay.
+          </p>
+          <p>
+            To banish repetitive toil, Sawant crafts automated infrastructure charms using Bash, Ansible playbooks, and Python scripts. His meticulous documentation practices—authoring comprehensive runbooks, knowledge base (KB) articles, and transparent post-incident reports—ensure complex anomalies are permanently resolved and recurrent failures are prevented.
+          </p>
+        </div>
+
+        <!-- Visual Feature: Animated SVG Cluster Radar -->
+        <div class="prophet-visual-card">
+          <div class="visual-title">
+            <span><i class="fas fa-network-wired"></i> High-Availability Cluster Telemetry</span>
+            <span style="color: var(--emerald); font-family: var(--font-mono);"><i class="fas fa-circle" style="font-size: 8px;"></i> LIVE 99.9%</span>
+          </div>
+
+          <div class="cluster-graphic">
+            <svg viewBox="0 0 600 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Grid background lines -->
+              <line x1="0" y1="20" x2="600" y2="20" stroke="#232a3b" stroke-dasharray="4 4"/>
+              <line x1="0" y1="60" x2="600" y2="60" stroke="#232a3b" stroke-dasharray="4 4"/>
+              <line x1="0" y1="100" x2="600" y2="100" stroke="#232a3b" stroke-dasharray="4 4"/>
+
+              <!-- Cluster Nodes -->
+              <g class="pulse-circle">
+                <circle cx="80" cy="60" r="14" fill="#181d2a" stroke="#d4af37" stroke-width="2"/>
+                <circle cx="80" cy="60" r="4" fill="#38bdf8"/>
+                <text x="80" y="90" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="JetBrains Mono">RHEL</text>
+              </g>
+
+              <line x1="94" y1="60" x2="186" y2="60" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="2 2"/>
+
+              <g class="pulse-circle">
+                <circle cx="200" cy="60" r="14" fill="#181d2a" stroke="#d4af37" stroke-width="2"/>
+                <circle cx="200" cy="60" r="4" fill="#10b981"/>
+                <text x="200" y="90" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="JetBrains Mono">SLES</text>
+              </g>
+
+              <line x1="214" y1="60" x2="306" y2="60" stroke="#10b981" stroke-width="1.5" stroke-dasharray="2 2"/>
+
+              <g class="pulse-circle">
+                <circle cx="320" cy="60" r="18" fill="#1e293b" stroke="#ffd700" stroke-width="2.5"/>
+                <circle cx="320" cy="60" r="6" fill="#ffd700"/>
+                <text x="320" y="96" text-anchor="middle" fill="#fef08a" font-size="11" font-weight="700" font-family="Cinzel">GATEWAY</text>
+              </g>
+
+              <line x1="338" y1="60" x2="426" y2="60" stroke="#ffd700" stroke-width="1.5" stroke-dasharray="2 2"/>
+
+              <g class="pulse-circle">
+                <circle cx="440" cy="60" r="14" fill="#181d2a" stroke="#d4af37" stroke-width="2"/>
+                <circle cx="440" cy="60" r="4" fill="#a855f7"/>
+                <text x="440" y="90" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="JetBrains Mono">Ubuntu</text>
+              </g>
+
+              <line x1="454" y1="60" x2="526" y2="60" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="2 2"/>
+
+              <g class="pulse-circle">
+                <circle cx="540" cy="60" r="14" fill="#181d2a" stroke="#d4af37" stroke-width="2"/>
+                <circle cx="540" cy="60" r="4" fill="#f43f5e"/>
+                <text x="540" y="90" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="JetBrains Mono">CentOS</text>
+              </g>
+            </svg>
+          </div>
+          <div class="visual-caption">Figure 1.0 &mdash; High-availability cluster orchestration spanning 15,000+ enterprise server nodes.</div>
+        </div>
+
+        <!-- The Great Virtualization Transfiguration -->
+        <div class="migration-banner">
+          <h4><i class="fas fa-server"></i> The Great Virtualization Transfiguration</h4>
+          <p>
+            Key contributor to the massive enterprise migration of <strong>20,000+ Virtual Machines from VMware to KVM hypervisors</strong>. Orchestrated cutovers, maintained state synchronization, and eliminated virtualization vendor lock-in without disrupting critical production workloads.
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN (Constrained Warlock Operations Dossier) -->
+      <aside class="prophet-sidebar">
+        <!-- SLA Badge Box -->
+        <div class="sla-callout-card">
+          <div class="sla-number">99.9%</div>
+          <div class="sla-label">Uptime SLA Maintained</div>
+          <div class="sla-sub">High-Availability Clusters &bull; 24/7/365</div>
+        </div>
+
+        <!-- Core Operations Dossier Card -->
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">
+            <i class="fas fa-terminal"></i> Systems Operations Dossier
+          </div>
+          <div class="sidebar-card-body">
+            <div class="spec-row">
+              <span class="spec-label">Specialist:</span>
+              <span class="spec-value">Shreyas Sawant</span>
+            </div>
+
+            <div class="spec-row">
+              <span class="spec-label">Role &amp; Tenure:</span>
+              <span class="spec-value">Systems Operations Engineer (2+ Yrs)</span>
+            </div>
+
+            <div class="spec-row">
+              <span class="spec-label">Fleet Scale:</span>
+              <span class="spec-value highlight-green">15,000+ Production Servers</span>
+            </div>
+
+            <div class="spec-row">
+              <span class="spec-label">Operating Systems:</span>
+              <div class="spec-tags">
+                <span class="spec-tag">RHEL</span>
+                <span class="spec-tag">SLES</span>
+                <span class="spec-tag">Ubuntu</span>
+                <span class="spec-tag">CentOS</span>
+              </div>
+            </div>
+
+            <div class="spec-row">
+              <span class="spec-label">Virtualization:</span>
+              <div class="spec-tags">
+                <span class="spec-tag">KVM</span>
+                <span class="spec-tag">VMware</span>
+                <span class="spec-tag">20k+ VM Migration</span>
+              </div>
+            </div>
+
+            <div class="spec-row">
+              <span class="spec-label">Toil Automation:</span>
+              <div class="spec-tags">
+                <span class="spec-tag">Ansible</span>
+                <span class="spec-tag">Bash</span>
+                <span class="spec-tag">Python</span>
+              </div>
+            </div>
+
+            <div class="spec-row">
+              <span class="spec-label">Operational Tenets:</span>
+              <span class="spec-value" style="font-size: 12.5px; color: #cbd5e1;">Incident, Problem &amp; Change Mgmt &bull; RCA &bull; Runbook Authoring &bull; Rotational Shifts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gryffindor Engineering Seal -->
+        <div class="sidebar-card" style="border-color: rgba(185, 28, 28, 0.4);">
+          <div class="sidebar-card-header" style="background: rgba(153, 27, 27, 0.2); color: #fca5a5;">
+            <i class="fas fa-shield-halved"></i> Hogwarts Engineering House
+          </div>
+          <div class="sidebar-card-body">
+            <p style="font-size: 13px; color: #e2e8f0; margin-bottom: 6px;">
+              <strong>Gryffindor House of Systems</strong> &mdash; Known for steadfast bravery during critical severity-1 outages, swift incident triages, and zero-panic shift handovers.
+            </p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- FULL WIDTH BOTTOM SECTION (The Systems Spellbook) -->
+      <div class="prophet-full-section">
+        <div class="section-banner-title">
+          <span>The Systems Operations Spellbook</span>
+        </div>
+
+        <div class="spellbook-grid">
+          <!-- Spell 1: Ansible & Automation -->
+          <div class="spellbook-card">
+            <div class="spell-icon"><i class="fas fa-gears"></i></div>
+            <div class="spell-heading">&curren; Ansible &amp; Bash Playbooks</div>
+            <div class="spell-stack">AUTOMATION &bull; TOIL REDUCTION</div>
+            <div class="spell-details">
+              Automates configuration drifts, mass health-check routines, and kernel patching across thousands of disparate enterprise nodes.
+            </div>
+          </div>
+
+          <!-- Spell 2: Incident Triage & RCA -->
+          <div class="spellbook-card">
+            <div class="spell-icon"><i class="fas fa-heart-pulse"></i></div>
+            <div class="spell-heading">&curren; Outage Shield &amp; RCA Analysis</div>
+            <div class="spell-stack">HIGH AVAILABILITY &bull; 99.9% SLA</div>
+            <div class="spell-details">
+              Swift service restoration, proactive monitoring, root cause isolation, and authoring rock-solid runbooks so recurring bugs are resolved permanently.
+            </div>
+          </div>
+
+          <!-- Spell 3: Virtualization Transfiguration -->
+          <div class="spellbook-card">
+            <div class="spell-icon"><i class="fas fa-cloud-arrow-up"></i></div>
+            <div class="spell-heading">&curren; Hypervisor Transfiguration</div>
+            <div class="spell-stack">20,000+ VM MIGRATION &bull; KVM / VMWARE</div>
+            <div class="spell-details">
+              Architects and executes zero-data-loss VM workload migrations from proprietary hypervisors to open-source KVM virtualization stacks.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MINISTRY CLASSIFIEDS / FLOO NETWORK FOOTER -->
+      <footer class="prophet-footer">
+        <div>
+          <span>&bull; Ministry Operations Dispatch &bull;</span>
+        </div>
+
+        <div class="footer-owl-links">
+          <a href="mailto:shreyas9822949536@gmail.com"><i class="fas fa-feather"></i> Owl Post (Email)</a>
+          <a href="https://linkedin.com/in/shreyas-sawant-268228190" target="_blank"><i class="fas fa-fire"></i> Floo Network (LinkedIn)</a>
+          <a href="https://github.com/Shreyas002-6" target="_blank"><i class="fab fa-github"></i> Repositories (GitHub)</a>
+          <a href="../project/index.html"><i class="fas fa-film"></i> Netflix Projects</a>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- Magical Audio & Spell Interaction Script -->
+  <script src="./magical.js"></script>
+</body>
+</html>

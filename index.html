@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Shreyas Sawant | Portfolio OS</title>
+  <meta name="description" content="Interactive desktop and smartphone themed developer portfolio of Shreyas Sawant featuring CLI terminal, projects, and skills.">
+
+  <!-- jQuery & jQuery Terminal CSS/JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css"/>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <!-- Application Styles -->
+  <link rel="stylesheet" href="./styles/style.css" />
+</head>
+<body>
+
+  <!-- =========================================================================
+       DESKTOP TOP STATUS BAR (Visible on Desktop / Tablets)
+       ========================================================================= -->
+  <header id="header" class="desktop-only">
+    <div class="top-bar-left">
+      <div class="os-brand">
+        <ion-icon name="laptop-outline" style="font-size: 18px; color: #38bdf8;"></ion-icon>
+        <span>ShreyasOS</span>
+      </div>
+      <div class="os-menu-items">
+        <span class="os-menu-item" onclick="if(window.WindowManager) window.WindowManager.open();">Terminal</span>
+        <span class="os-menu-item" onclick="window.location.href='./project/index.html';">Projects</span>
+        <span class="os-menu-item" onclick="window.location.href='./skill/index.html';">Skills</span>
+        <span class="os-menu-item" onclick="window.location.href='./about/index.html';">About</span>
+      </div>
+    </div>
+
+    <div class="top-bar-right">
+      <!-- Live Visitor Counter Badge -->
+      <div class="status-pill" id="visitor-badge" title="Visitor tracking active">
+        <ion-icon name="eye-outline"></ion-icon>
+        <span>Detecting...</span>
+      </div>
+
+      <!-- Live Network Status -->
+      <div class="status-pill" id="status-wifi" title="Network: Online">
+        <ion-icon name="wifi-outline"></ion-icon>
+      </div>
+
+      <!-- Live Battery Status -->
+      <div class="status-pill" id="status-battery" title="Battery status">
+        <ion-icon name="battery-half-outline"></ion-icon>
+        <span class="status-badge">100%</span>
+      </div>
+
+      <!-- Live Real-Time Clock -->
+      <div class="status-pill" id="status-clock" title="System Clock">
+        <span class="clock-date">--</span>
+        <span class="clock-time">--:--</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       MOBILE PHONE STATUS BAR (Visible on Mobile Screens)
+       ========================================================================= -->
+  <div class="phone-status-bar mobile-only">
+    <div class="phone-time" id="phone-clock">9:41</div>
+
+    <!-- Phone Dynamic Island -->
+    <div class="phone-island">
+      <div class="island-camera"></div>
+      <div class="island-sensor"></div>
+    </div>
+
+    <div class="phone-status-right">
+      <ion-icon name="cellular-outline"></ion-icon>
+      <ion-icon name="wifi-outline"></ion-icon>
+      <div class="phone-battery-pill" id="phone-battery">
+        <ion-icon name="battery-half-outline"></ion-icon>
+        <span>100%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MOBILE PHONE HOME SCREEN (Visible on Mobile Screens)
+       ========================================================================= -->
+  <div class="phone-home-screen mobile-only">
+    <!-- Phone Top Greeting Widget -->
+    <div class="phone-widget-card">
+      <div class="widget-top">
+        <div class="widget-date" id="phone-date">Friday, Oct 16</div>
+        <div class="widget-greeting">Welcome to Shreyas's Phone</div>
+      </div>
+      <div class="widget-visitor-pill" onclick="if(window.WindowManager){window.WindowManager.open();if(window.PortfolioTerminal)window.PortfolioTerminal.executeCommand('visitor');}">
+        <ion-icon name="analytics-outline"></ion-icon>
+        <span id="phone-visitor-text">Tap for Visitor Stats</span>
+      </div>
+    </div>
+
+    <!-- Phone App Grid (4 Columns iOS/Android Layout) -->
+    <div class="phone-app-grid">
+      <!-- 1. Terminal App -->
+      <div class="phone-app-item" onclick="if(window.WindowManager) window.WindowManager.open();">
+        <div class="phone-app-icon app-terminal">
+          <img src="./img/terminal.png" alt="Terminal">
+          <span class="app-badge">CLI</span>
+        </div>
+        <span class="phone-app-name">Terminal</span>
+      </div>
+
+      <!-- 2. Projects App (Netflix UI) -->
+      <a class="phone-app-item" href="./project/index.html">
+        <div class="phone-app-icon app-netflix">
+          <img src="./img/netflix.jpg" alt="Projects">
+          <span class="app-badge badge-red">HOT</span>
+        </div>
+        <span class="phone-app-name">Projects</span>
+      </a>
+
+      <!-- 3. Skills App -->
+      <a class="phone-app-item" href="./skill/index.html">
+        <div class="phone-app-icon app-skills">
+          <ion-icon name="code-slash-outline"></ion-icon>
+        </div>
+        <span class="phone-app-name">Skills</span>
+      </a>
+
+      <!-- 4. About App -->
+      <a class="phone-app-item" href="./about/index.html">
+        <div class="phone-app-icon app-about">
+          <ion-icon name="newspaper-outline"></ion-icon>
+        </div>
+        <span class="phone-app-name">About</span>
+      </a>
+
+      <!-- 5. Resume PDF -->
+      <a class="phone-app-item" href="./img/rs.pdf" target="_blank" rel="noopener noreferrer">
+        <div class="phone-app-icon app-resume">
+          <ion-icon name="document-text-outline"></ion-icon>
+        </div>
+        <span class="phone-app-name">Resume</span>
+      </a>
+
+      <!-- 6. GitHub App -->
+      <a class="phone-app-item" href="https://github.com/Shreyas002-6" target="_blank" rel="noopener noreferrer">
+        <div class="phone-app-icon app-github">
+          <img src="./img/github.png" alt="GitHub">
+        </div>
+        <span class="phone-app-name">GitHub</span>
+      </a>
+
+      <!-- 7. LinkedIn App -->
+      <a class="phone-app-item" href="https://linkedin.com/in/shreyas-sawant-268228190" target="_blank" rel="noopener noreferrer">
+        <div class="phone-app-icon app-linkedin">
+          <img src="./img/linkedin.png" alt="LinkedIn">
+        </div>
+        <span class="phone-app-name">LinkedIn</span>
+      </a>
+
+      <!-- 8. Contact / Mail App -->
+      <a class="phone-app-item" href="mailto:shreyas9822949536@gmail.com">
+        <div class="phone-app-icon app-mail">
+          <ion-icon name="mail-outline"></ion-icon>
+        </div>
+        <span class="phone-app-name">Mail</span>
+      </a>
+    </div>
+
+    <!-- Phone Bottom Dock -->
+    <div class="phone-dock-container">
+      <div class="phone-dock">
+        <a class="phone-dock-item" href="mailto:shreyas9822949536@gmail.com">
+          <ion-icon name="call-outline"></ion-icon>
+        </a>
+        <div class="phone-dock-item" onclick="if(window.WindowManager) window.WindowManager.open();">
+          <img src="./img/terminal.png" alt="Terminal">
+        </div>
+        <a class="phone-dock-item" href="./project/index.html">
+          <img src="./img/netflix.jpg" alt="Netflix">
+        </a>
+        <a class="phone-dock-item" href="https://linkedin.com/in/shreyas-sawant-268228190" target="_blank">
+          <img src="./img/linkedin.png" alt="LinkedIn">
+        </a>
+      </div>
+    </div>
+
+    <!-- Phone Home Indicator Bar -->
+    <div class="phone-home-indicator"></div>
+  </div>
+
+  <!-- =========================================================================
+       DESKTOP WORKSPACE (Visible on Desktop / Tablets)
+       ========================================================================= -->
+  <main class="desktop-workspace desktop-only">
+    <!-- Desktop Folder / Shortcut Icons -->
+    <div id="folders">
+      <a class="desktop-icon" href="./about/index.html" title="Open About">
+        <img src="./img/folder.png" alt="About Folder">
+        <label>About</label>
+      </a>
+
+      <a class="desktop-icon" href="./project/index.html" title="Open Projects">
+        <img src="./img/netflix.jpg" alt="Projects Netflix Icon">
+        <label>Projects</label>
+      </a>
+
+      <a class="desktop-icon" href="./skill/index.html" title="Open Skills">
+        <img src="./img/folder.png" alt="Skills Folder">
+        <label>Skills</label>
+      </a>
+
+      <a class="desktop-icon" href="./img/rs.pdf" target="_blank" rel="noopener noreferrer" title="View Resume PDF">
+        <img src="./img/folder.png" alt="Resume File">
+        <label>Resume</label>
+      </a>
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       DRAGGABLE INTERACTIVE TERMINAL WINDOW (Shared with Mobile Phone App View)
+       ========================================================================= -->
+  <div id="term">
+    <div id="term_demo">
+      <!-- Window Chrome / Title Bar -->
+      <div id="term-header">
+        <div class="window-controls desktop-only">
+          <button class="win-btn win-btn-close" id="win-btn-close" title="Close Terminal"></button>
+          <button class="win-btn win-btn-min" id="win-btn-min" title="Minimize Terminal"></button>
+          <button class="win-btn win-btn-max" id="win-btn-max" title="Maximize Terminal"></button>
+        </div>
+
+        <!-- Mobile Done Header Button -->
+        <button class="mobile-only mobile-done-btn" onclick="if(window.WindowManager) window.WindowManager.close();">
+          &larr; Done
+        </button>
+
+        <div class="window-title">
+          <ion-icon name="terminal-outline"></ion-icon>
+          <span>shreyas@portfolio: ~</span>
+        </div>
+
+        <div class="window-actions">
+          <img id="gif" src="https://i.chzbgr.com/full/8507870208/h210892D7/jonroru-pixel-art-beemo-gif" alt="BMO Pixel Mascot" title="Hey! Click me!">
+        </div>
+      </div>
+
+      <!-- Quick Command Ribbon for Mobile Touch Interaction -->
+      <div class="terminal-quickbar">
+        <button type="button" class="quick-chip" onclick="if(window.PortfolioTerminal) window.PortfolioTerminal.executeCommand('help');">help</button>
+        <button type="button" class="quick-chip" onclick="if(window.PortfolioTerminal) window.PortfolioTerminal.executeCommand('projects');">projects</button>
+        <button type="button" class="quick-chip" onclick="if(window.PortfolioTerminal) window.PortfolioTerminal.executeCommand('skills');">skills</button>
+        <button type="button" class="quick-chip" onclick="if(window.PortfolioTerminal) window.PortfolioTerminal.executeCommand('visitor');">visitor</button>
+        <button type="button" class="quick-chip" onclick="if(window.PortfolioTerminal) window.PortfolioTerminal.executeCommand('neofetch');">neofetch</button>
+        <button type="button" class="quick-chip" onclick="if(window.PortfolioTerminal) window.PortfolioTerminal.executeCommand('resume');">resume</button>
+        <button type="button" class="quick-chip" onclick="if(window.PortfolioTerminal) window.PortfolioTerminal.executeCommand('theme matrix');">matrix</button>
+        <button type="button" class="quick-chip" onclick="if(window.PortfolioTerminal) window.PortfolioTerminal.executeCommand('about');">about</button>
+        <button type="button" class="quick-chip" onclick="if(window.PortfolioTerminal) window.PortfolioTerminal.executeCommand('clear');">clear</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       DESKTOP BOTTOM DOCK / TASKBAR (Desktop only)
+       ========================================================================= -->
+  <footer id="footer" class="desktop-only">
+    <nav class="mac-dock">
+      <!-- Menu Item -->
+      <div class="dock-item" data-tooltip="Start Menu" onclick="if(window.WindowManager) window.WindowManager.open();">
+        <img src="./img/menu.png" alt="Menu">
+      </div>
+
+      <!-- Terminal App Toggle -->
+      <div class="dock-item app-open app-focused" id="dock-terminal" data-tooltip="Terminal (CLI)">
+        <img src="./img/terminal.png" alt="Terminal App">
+      </div>
+
+      <!-- Projects App -->
+      <a class="dock-item" href="./project/index.html" data-tooltip="Projects (Netflix UI)">
+        <img src="./img/netflix.jpg" alt="Projects App">
+      </a>
+
+      <!-- Skills App -->
+      <a class="dock-item" href="./skill/index.html" data-tooltip="Skills Showcase">
+        <img src="./img/folder.png" alt="Skills App">
+      </a>
+
+      <!-- About App -->
+      <a class="dock-item" href="./about/index.html" data-tooltip="About Shreyas">
+        <img src="./img/folder.png" alt="About App">
+      </a>
+
+      <div class="dock-divider"></div>
+
+      <!-- Social Links -->
+      <a class="dock-item" href="https://github.com/Shreyas002-6" target="_blank" rel="noopener noreferrer" data-tooltip="GitHub Profile">
+        <img src="./img/github.png" alt="GitHub">
+      </a>
+
+      <a class="dock-item" href="https://linkedin.com/in/shreyas-sawant-268228190" target="_blank" rel="noopener noreferrer" data-tooltip="LinkedIn Profile">
+        <img src="./img/linkedin.png" alt="LinkedIn">
+      </a>
+
+      <a class="dock-item" href="mailto:shreyas9822949536@gmail.com" data-tooltip="Email Shreyas">
+        <img src="./img/dots-menu.png" alt="Contact Email">
+      </a>
+
+      <a class="dock-item" href="https://instagram.com" target="_blank" rel="noopener noreferrer" data-tooltip="Instagram">
+        <img src="./img/instagram.png" alt="Instagram">
+      </a>
+    </nav>
+  </footer>
+
+  <!-- MODULAR JAVASCRIPT ARCHITECTURE -->
+  <script src="./script/clock.js"></script>
+  <script src="./script/tracker.js"></script>
+  <script src="./script/window.js"></script>
+  <script src="./script/terminal.js"></script>
+  <script src="./script/main.js"></script>
+
+</body>
+</html>

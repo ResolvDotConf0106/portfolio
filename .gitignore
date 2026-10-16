@@ -1,0 +1,21 @@
+# Backup and temporary editor files
+*~
+*.swp
+*.swo
+*.bak
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE and Editor directories
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node modules / build artifacts (if any added later)
+node_modules/
+dist/
+build/

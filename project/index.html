@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Netflix | Shreyas Sawant Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css" />
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <!-- Google Fonts for Netflix Aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="netflix-app">
+
+    <!-- =========================================================================
+         NETFLIX STICKY HEADER
+         ========================================================================= -->
+    <header class="netflix-header">
+      <div class="header-left">
+        <a class="netflix-brand" href="#home">
+          <span class="brand-text">NETFLIX</span>
+        </a>
+
+        <nav class="netflix-nav">
+          <a href="../index.html" class="nav-link special-link"><i class="fas fa-desktop"></i> Desktop OS</a>
+          <a href="#home" class="nav-link active">Home</a>
+          <a href="#trending" class="nav-link">Trending</a>
+          <a href="#top10" class="nav-link">Top 10</a>
+          <a href="#personal" class="nav-link">Personal</a>
+          <a href="#college" class="nav-link">College</a>
+          <a href="https://github.com/Shreyas002-6" target="_blank" class="nav-link">GitHub</a>
+        </nav>
+      </div>
+
+      <div class="header-right">
+        <!-- Live Search Box -->
+        <div class="search-container" id="searchBox">
+          <i class="fas fa-search search-icon" id="searchToggleBtn" title="Search projects"></i>
+          <input type="text" id="searchInput" placeholder="Titles, technologies, keywords..." autocomplete="off">
+        </div>
+
+        <!-- Notification Bell -->
+        <div class="notification-box" title="Notifications">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">1</span>
+        </div>
+
+        <!-- User Profile Avatar & Dropdown -->
+        <div class="profile-dropdown-container">
+          <div class="profile-avatar">
+            <div class="avatar-box">
+              <i class="fas fa-smile"></i>
+            </div>
+            <i class="fas fa-caret-down caret-icon"></i>
+          </div>
+
+          <div class="profile-menu">
+            <div class="menu-user-info">
+              <strong>Shreyas Sawant</strong>
+              <span>Lead Developer</span>
+            </div>
+            <hr>
+            <a href="https://github.com/Shreyas002-6" target="_blank"><i class="fab fa-github"></i> GitHub Repos</a>
+            <a href="https://linkedin.com/in/shreyas-sawant-268228190" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="../img/rs.pdf" target="_blank"><i class="fas fa-file-pdf"></i> View Resume</a>
+            <hr>
+            <a href="../index.html"><i class="fas fa-sign-out-alt"></i> Exit to Desktop OS</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- =========================================================================
+         CINEMATIC HERO BILLBOARD
+         ========================================================================= -->
+    <section class="hero-billboard" id="home">
+      <div class="billboard-backdrop" style="background-image: url('./img/ccj.png');">
+        <div class="vignette-overlay"></div>
+      </div>
+
+      <div class="billboard-content">
+        <div class="billboard-series-badge">
+          <span class="n-logo">N</span>
+          <span class="n-text">SHREYAS ORIGINAL</span>
+        </div>
+
+        <h1 class="billboard-title">COUPON CODE JUNCTION</h1>
+
+        <div class="billboard-meta">
+          <span class="badge-top10"><i class="fas fa-trophy"></i> #1 in Projects Today</span>
+          <span class="match-score">99% Match</span>
+          <span class="year-badge">2024</span>
+          <span class="age-badge">ALL</span>
+          <span class="res-badge">Ultra HD 4K</span>
+          <span class="category-badge">Full-Stack Web App</span>
+        </div>
+
+        <p class="billboard-logline">
+          An intelligent real-time deal discovery and coupon verification platform engineered to optimize consumer savings across hundreds of digital storefronts.
+        </p>
+
+        <div class="billboard-actions">
+          <button type="button" class="btn-netflix btn-play" id="heroPlayBtn">
+            <i class="fas fa-play"></i> Play / Demo
+          </button>
+          <button type="button" class="btn-netflix btn-info" id="heroInfoBtn">
+            <i class="fas fa-info-circle"></i> More Info
+          </button>
+        </div>
+      </div>
+
+      <div class="billboard-right-controls">
+        <button type="button" class="sound-toggle-btn" id="heroSoundBtn" title="Toggle audio chime">
+          <i class="fas fa-volume-up"></i>
+        </button>
+        <span class="billboard-maturity">ALL</span>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         NETFLIX PROJECT ROWS & CAROUSELS
+         ========================================================================= -->
+    <main class="netflix-content">
+
+      <!-- ROW 1: TRENDING NOW -->
+      <section class="project-row" id="trending">
+        <h2 class="row-header">
+          <span>Trending Now</span>
+          <span class="row-explore">Explore All &gt;</span>
+        </h2>
+
+        <div class="slider-wrapper">
+          <button class="slider-handle prev" title="Scroll left"><i class="fas fa-chevron-left"></i></button>
+
+          <div class="row-slider">
+            <!-- Card: CouponCodeJunction -->
+            <div class="card-netflix" data-project-id="ccj">
+              <div class="card-image-box">
+                <img src="./img/ccj.png" alt="CouponCodeJunction">
+                <span class="card-top-tag">NEW RELEASE</span>
+              </div>
+              <div class="card-mini-meta">
+                <div class="mini-title">CouponCodeJunction</div>
+                <div class="mini-stats">
+                  <span class="score">99% Match</span>
+                  <span class="tag">Web App</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card: LightAlgo -->
+            <div class="card-netflix" data-project-id="la">
+              <div class="card-image-box">
+                <img src="./img/LA.png" alt="LightAlgo">
+                <span class="card-top-tag">POPULAR</span>
+              </div>
+              <div class="card-mini-meta">
+                <div class="mini-title">LightAlgo</div>
+                <div class="mini-stats">
+                  <span class="score">98% Match</span>
+                  <span class="tag">Algorithm</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card: KiloGram -->
+            <div class="card-netflix" data-project-id="kg">
+              <div class="card-image-box">
+                <img src="./img/KG.png" alt="KiloGram">
+              </div>
+              <div class="card-mini-meta">
+                <div class="mini-title">KiloGram Social</div>
+                <div class="mini-stats">
+                  <span class="score">97% Match</span>
+                  <span class="tag">Full Stack</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card: FarmConnect -->
+            <div class="card-netflix" data-project-id="fc">
+              <div class="card-image-box">
+                <img src="./img/FC.jpg" alt="FarmConnect">
+              </div>
+              <div class="card-mini-meta">
+                <div class="mini-title">FarmConnect</div>
+                <div class="mini-stats">
+                  <span class="score">96% Match</span>
+                  <span class="tag">AgriTech</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="slider-handle next" title="Scroll right"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </section>
+
+      <!-- ROW 2: TOP 10 IN PORTFOLIO TODAY -->
+      <section class="project-row" id="top10">
+        <h2 class="row-header">
+          <span>Top 10 Projects Today</span>
+        </h2>
+
+        <div class="slider-wrapper">
+          <button class="slider-handle prev"><i class="fas fa-chevron-left"></i></button>
+
+          <div class="row-slider top10-slider">
+            <!-- Rank 1 -->
+            <div class="card-netflix top10-card" data-project-id="ccj">
+              <span class="top10-rank">1</span>
+              <div class="card-image-box">
+                <img src="./img/ccj.png" alt="Rank 1">
+              </div>
+            </div>
+
+            <!-- Rank 2 -->
+            <div class="card-netflix top10-card" data-project-id="la">
+              <span class="top10-rank">2</span>
+              <div class="card-image-box">
+                <img src="./img/LA.png" alt="Rank 2">
+              </div>
+            </div>
+
+            <!-- Rank 3 -->
+            <div class="card-netflix top10-card" data-project-id="kg">
+              <span class="top10-rank">3</span>
+              <div class="card-image-box">
+                <img src="./img/KG.png" alt="Rank 3">
+              </div>
+            </div>
+
+            <!-- Rank 4 -->
+            <div class="card-netflix top10-card" data-project-id="fc">
+              <span class="top10-rank">4</span>
+              <div class="card-image-box">
+                <img src="./img/FC.jpg" alt="Rank 4">
+              </div>
+            </div>
+
+            <!-- Rank 5 -->
+            <div class="card-netflix top10-card" data-project-id="cr">
+              <span class="top10-rank">5</span>
+              <div class="card-image-box">
+                <img src="./img/CR.png" alt="Rank 5">
+              </div>
+            </div>
+          </div>
+
+          <button class="slider-handle next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </section>
+
+      <!-- ROW 3: PERSONAL RELEASES -->
+      <section class="project-row" id="personal">
+        <h2 class="row-header">
+          <span>Personal Releases &amp; Innovations</span>
+        </h2>
+
+        <div class="slider-wrapper">
+          <button class="slider-handle prev"><i class="fas fa-chevron-left"></i></button>
+
+          <div class="row-slider">
+            <div class="card-netflix" data-project-id="wi">
+              <div class="card-image-box">
+                <img src="./img/WI.png" alt="WatchIt">
+              </div>
+              <div class="card-mini-meta">
+                <div class="mini-title">WatchIt</div>
+                <div class="mini-stats"><span class="score">95% Match</span><span class="tag">Media</span></div>
+              </div>
+            </div>
+
+            <div class="card-netflix" data-project-id="fc">
+              <div class="card-image-box">
+                <img src="./img/FC.jpg" alt="FarmConnect">
+              </div>
+              <div class="card-mini-meta">
+                <div class="mini-title">FarmConnect</div>
+                <div class="mini-stats"><span class="score">96% Match</span><span class="tag">Marketplace</span></div>
+              </div>
+            </div>
+
+            <div class="card-netflix" data-project-id="cr">
+              <div class="card-image-box">
+                <img src="./img/CR.png" alt="CodeRadar">
+              </div>
+              <div class="card-mini-meta">
+                <div class="mini-title">CodeRadar</div>
+                <div class="mini-stats"><span class="score">94% Match</span><span class="tag">Dev Tools</span></div>
+              </div>
+            </div>
+
+            <div class="card-netflix" data-project-id="cm">
+              <div class="card-image-box">
+                <img src="./img/CM.png" alt="Canteen Management">
+              </div>
+              <div class="card-mini-meta">
+                <div class="mini-title">Canteen Management</div>
+                <div class="mini-stats"><span class="score">93% Match</span><span class="tag">POS &amp; SQL</span></div>
+              </div>
+            </div>
+          </div>
+
+          <button class="slider-handle next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </section>
+
+      <!-- ROW 4: COLLEGE BLOCKBUSTERS -->
+      <section class="project-row" id="college">
+        <h2 class="row-header">
+          <span>College Blockbusters &amp; Academics</span>
+        </h2>
+
+        <div class="slider-wrapper">
+          <button class="slider-handle prev"><i class="fas fa-chevron-left"></i></button>
+
+          <div class="row-slider">
+            <div class="card-netflix" data-project-id="ccjn">
+              <div class="card-image-box">
+                <img src="./img/ccjn.png" alt="CCJN Portal">
+              </div>
+              <div class="card-mini-meta">
+                <div class="mini-title">CCJN Portal</div>
+                <div class="mini-stats"><span class="score">94% Match</span><span class="tag">Campus</span></div>
+              </div>
+            </div>
+
+            <div class="card-netflix" data-project-id="mk">
+              <div class="card-image-box">
+                <img src="./img/MK.png" alt="MediKart">
+              </div>
+              <div class="card-mini-meta">
+                <div class="mini-title">MediKart</div>
+                <div class="mini-stats"><span class="score">95% Match</span><span class="tag">HealthTech</span></div>
+              </div>
+            </div>
+
+            <div class="card-netflix" data-project-id="ps">
+              <div class="card-image-box">
+                <img src="./img/PS.png" alt="PizzaShop">
+              </div>
+              <div class="card-mini-meta">
+                <div class="mini-title">PizzaShop</div>
+                <div class="mini-stats"><span class="score">92% Match</span><span class="tag">E-Commerce</span></div>
+              </div>
+            </div>
+          </div>
+
+          <button class="slider-handle next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- =========================================================================
+         NETFLIX DETAIL POP-UP MODAL
+         ========================================================================= -->
+    <div class="netflix-modal" id="netflixModal">
+      <div class="modal-backdrop-layer"></div>
+
+      <div class="modal-dialog">
+        <!-- Close Button -->
+        <button class="modal-close-btn" id="modalCloseBtn" title="Close"><i class="fas fa-times"></i></button>
+
+        <!-- Modal Billboard Header -->
+        <div class="modal-hero" id="modalBackdrop">
+          <div class="modal-vignette"></div>
+          <div class="modal-hero-content">
+            <h2 class="modal-title" id="modalTitle">Project Title</h2>
+            <div class="modal-actions">
+              <button class="btn-netflix btn-play" id="modalPlayBtn">
+                <i class="fas fa-play"></i> Launch Demo
+              </button>
+              <button class="btn-netflix btn-secondary" id="modalGithubBtn">
+                <i class="fab fa-github"></i> Source Code
+              </button>
+              <button class="btn-round" title="Add to My List">
+                <i class="fas fa-plus"></i>
+              </button>
+              <button class="btn-round" title="Like">
+                <i class="fas fa-thumbs-up"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Body Content -->
+        <div class="modal-body">
+          <div class="modal-main-column">
+            <div class="modal-meta-row">
+              <span class="match-score" id="modalMatch">98% Match</span>
+              <span class="year-badge" id="modalYear">2024</span>
+              <span class="age-badge" id="modalRating">ALL</span>
+              <span class="res-badge" id="modalDuration">Full Stack</span>
+              <span class="hd-badge">HD</span>
+            </div>
+
+            <p class="modal-logline" id="modalLogline">Project Logline...</p>
+            <p class="modal-description" id="modalDescription">Detailed overview...</p>
+          </div>
+
+          <div class="modal-side-column">
+            <div class="side-item">
+              <span class="side-label">Tags &amp; Genres:</span>
+              <div class="modal-tags" id="modalTags"></div>
+            </div>
+
+            <div class="side-item">
+              <span class="side-label">Technical Specs:</span>
+              <div class="modal-specs" id="modalSpecs"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         NETFLIX FOOTER
+         ========================================================================= -->
+    <footer class="netflix-footer">
+      <div class="footer-socials">
+        <a href="https://github.com/Shreyas002-6" target="_blank"><i class="fab fa-github fa-lg"></i></a>
+        <a href="https://linkedin.com/in/shreyas-sawant-268228190" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+        <a href="mailto:shreyas9822949536@gmail.com"><i class="fas fa-envelope fa-lg"></i></a>
+      </div>
+
+      <div class="footer-links">
+        <a href="../index.html">Desktop OS Home</a>
+        <a href="../about/index.html">About Developer</a>
+        <a href="../skill/index.html">Skills Showcase</a>
+        <a href="../img/rs.pdf" target="_blank">Download CV</a>
+        <a href="https://github.com/Shreyas002-6" target="_blank">GitHub Profile</a>
+        <a href="mailto:shreyas9822949536@gmail.com">Contact Developer</a>
+      </div>
+
+      <div class="service-code-box">
+        <button class="service-code-btn">Service Code: 2026-SHREYAS</button>
+      </div>
+
+      <p class="footer-copy">&copy; 2026 Shreyas Sawant • Netflix Portfolio Experience. All trademarks belong to their respective owners.</p>
+    </footer>
+
+  </div>
+
+  <script src="./netflix.js"></script>
+</body>
+</html>
